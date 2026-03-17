@@ -387,54 +387,93 @@ box-shadow:0 4px 8px rgba(184,60,40,0.2);
 
 /* Mobile (Phones, Portrait): Up to 480px */
 @media(max-width:480px){
+  body{
+    padding:12px !important;
+  }
+
   h1{
-    font-size:28px !important;
-    margin-bottom:12px !important;
+    font-size:32px !important;
+    margin-bottom:20px !important;
+    letter-spacing:2px !important;
+  }
+
+  .w-full.max-w-2xl{
+    padding:0 !important;
   }
 
   .section-container{
-    padding:16px !important;
-    margin-bottom:16px !important;
+    padding:20px !important;
+    margin-bottom:20px !important;
+    border-radius:12px !important;
   }
 
   .section-title{
-    font-size:16px !important;
-    margin-bottom:12px !important;
+    font-size:18px !important;
+    margin-bottom:16px !important;
+    font-weight:700 !important;
   }
 
   .email-box,
   .social-container,
   .cv-box{
-    padding:12px !important;
+    padding:16px !important;
+    border-radius:10px !important;
   }
 
   .email-label,
   .cv-label{
-    font-size:11px !important;
+    font-size:13px !important;
+    font-weight:600 !important;
+    margin-bottom:10px !important;
+    display:block !important;
   }
 
   .email-link,
   .cv-button{
-    font-size:13px !important;
-    padding:8px 12px !important;
+    font-size:14px !important;
+    padding:12px 18px !important;
+    border-radius:8px !important;
+    min-height:44px !important;
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
   }
 
   .social-icon-link{
-    font-size:24px !important;
-    padding:8px !important;
+    font-size:28px !important;
+    padding:12px !important;
+    min-width:50px !important;
+    min-height:50px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    border-radius:10px !important;
   }
 
-  .dark-mode-btn{
-    top:10px !important;
-    right:10px !important;
-    font-size:18px !important;
+  .social-container{
+    gap:12px !important;
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+  }
+
+  .fixed.top-5.right-10{
+    top:16px !important;
+    right:16px !important;
+    font-size:24px !important;
+    width:44px !important;
+    height:44px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:center !important;
   }
 
   .back-btn{
-    bottom:8px !important;
-    right:8px !important;
-    padding:8px 10px !important;
-    font-size:16px !important;
+    bottom:16px !important;
+    right:16px !important;
+    padding:12px 16px !important;
+    font-size:18px !important;
+    min-height:44px !important;
   }
 }
 
