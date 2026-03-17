@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Projects</title>
+ <title>⚡ Jaswanth's | Archives</title>
+
+    <!-- SVG (modern browsers) -->
+    <link rel="icon" type="image/jpg" href="icons8-circled-j-50.png">
+
+    <!-- Fallback (important) -->
+    <link rel="icon" href="icons8-circled-j-50.png">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="../about-me/styles.css">
@@ -21,8 +27,14 @@ tailwind.config = {
 <style>
 
 :root{
---red:#ef4444;
+--bg:#f3f4f6;
+--card-bg:#ffffff;
+--border:rgba(0,0,0,0.1);
+--border-active:rgba(0,0,0,0.3);
 --accent:#10b981;
+--text:#1f2937;
+--text-dim:#6b7280;
+--red:#b83c28;
 --angle:0deg;
 }
 
@@ -32,6 +44,11 @@ scroll-behavior: smooth;
 
 body{
 position:relative;
+font-family:'JetBrains Mono', monospace;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
 }
 
 /* CRT Scanlines */
@@ -286,75 +303,264 @@ opacity:0;
 transition:opacity 0.3s;
 }
 
-.project-card.active h2::before{
-animation:glitch 0.15s infinite;
-}
-
-.project-card.active h2::after{
-animation:glitch2 0.15s infinite;
-}
-
 /* Description transition */
 p{
 transition:color 0.3s ease;
 }
 
+/* Grid layout for projects */
+.cert-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+gap:20px;
+position:relative;
+z-index:1;
+}
+
+/* Card */
+.cert-card{
+background:var(--card-bg);
+border:2px solid var(--border);
+border-radius:10px;
+padding:24px;
+position:relative;
+transition:0.35s;
+overflow:hidden;
+}
+
+.cert-card::before{
+content:'';
+position:absolute;
+top:-50%;
+left:-50%;
+width:200%;
+height:200%;
+background:conic-gradient(
+from var(--angle,0deg),
+transparent 0deg,
+var(--red) 40deg,
+rgba(184,60,40,0.8) 60deg,
+transparent 80deg
+);
+opacity:0;
+transition:opacity 0.3s;
+animation:none;
+}
+
+.cert-card.active::before{
+content:'';
+position:absolute;
+inset:0;
+background:conic-gradient(
+from var(--angle,0deg),
+transparent 0deg,
+var(--red) 40deg,
+rgba(184,60,40,0.8) 60deg,
+transparent 80deg
+);
+opacity:1;
+animation:spin 2s linear infinite;
+pointer-events:none;
+}
+
+.cert-card:hover{
+transform:translateY(-12px) scale(1.02);
+box-shadow:0 24px 60px rgba(0,0,0,0.15), 0 0 30px rgba(184,60,40,0.3);
+border-color:var(--red);
+border-width:2px;
+}
+
+.cert-card:hover::before{
+opacity:0.5;
+animation:spin 2s linear infinite;
+}
+
+.cert-card:hover .cert-title{
+color:#ff6b4a;
+}
+
+.cert-card:hover .cert-title::before,
+.cert-card:hover .cert-title::after{
+animation:glitch 0.15s infinite;
+opacity:1;
+}
+
+.cert-card:hover .cert-meta,
+.cert-card:hover .cert-desc{
+color:var(--accent);
+}
+
+/* Inner content wrapper to appear above border animation */
+.cert-card-inner{
+position:relative;
+z-index:2;
+}
+
+/* Title with glitch effect */
+.cert-title{
+font-size:15px;
+font-weight:700;
+color:var(--accent);
+margin-bottom:12px;
+position:relative;
+display:inline-block;
+transition:color 0.3s ease;
+text-shadow:0 0 0px transparent;
+}
+
+.cert-title::before{
+content:attr(data-text);
+position:absolute;
+left:0;
+top:0;
+color:#00ccff;
+clip-path:polygon(0 15%,100% 15%,100% 40%,0 40%);
+animation:glitch 0.3s infinite;
+opacity:0;
+transition:opacity 0.3s;
+}
+
+.cert-title::after{
+content:attr(data-text);
+position:absolute;
+left:0;
+top:0;
+color:#ff3366;
+clip-path:polygon(0 60%,100% 60%,100% 80%,0 80%);
+animation:glitch2 0.3s infinite;
+opacity:0;
+transition:opacity 0.3s;
+}
+
+.cert-card.active .cert-title::before{
+animation:glitch 0.15s infinite;
+}
+
+.cert-card.active .cert-title::after{
+animation:glitch2 0.15s infinite;
+}
+
+/* meta */
+.cert-meta{
+font-size:12px;
+color:var(--text-dim);
+line-height:1.8;
+margin-bottom:10px;
+transition:color 0.3s ease;
+}
+
+/* description */
+.cert-desc{
+font-size:12px;
+color:var(--text-dim);
+line-height:1.6;
+border-top:1px solid var(--border);
+padding-top:10px;
+transition:color 0.3s ease;
+}
+
+/* card index */
+.card-index{
+position:absolute;
+top:12px;
+right:14px;
+font-size:11px;
+color:#9ca3af;
+z-index:3;
+}
+
+/* Stagger reveal animation */
+.cert-card{
+opacity:0;
+transform:translateY(25px);
+animation:none;
+}
+
+.cert-card.revealed{
+opacity:1;
+transform:translateY(0);
+animation:fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp{
+from{
+opacity:0;
+transform:translateY(25px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* Dark mode */
+.dark{
+--bg:#111827;
+--card-bg:#1f2937;
+--text:#e5e7eb;
+--text-dim:#9ca3af;
+--border:rgba(255,255,255,0.08);
+--border-active:rgba(255,255,255,0.25);
+--accent:#34d399;
+--red:#e05535;
+}
+
 </style></head>
 
-<body class="bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200 flex items-center justify-center min-h-screen p-4 font-mono" style="font-family: 'JetBrains Mono', monospace;">
+<body class="flex items-center justify-center min-h-screen p-4">
 
 <!-- Dark Mode Toggle -->
-<button id="darkToggle" class="fixed top-5 right-5 text-xl z-50">
+<button onclick="toggleDark()"
+class="fixed top-5 right-10 text-xl z-50">
 🌙
 </button>
 
-<!-- Terminal Container -->
-<div class="terminal w-full max-w-4xl mx-4 rounded-xl border border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden bg-white dark:bg-gray-900">
+<div class="w-full max-w-5xl">
 
-  <!-- Header -->
-  <div class="flex items-center justify-center px-6 py-3 bg-gray-200 dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
-    <p class="text-2xl font-mono font-semibold text-gray-800 dark:text-gray-100">
-      프로젝트
-    </p>
-  </div>
+<h1 class="text-3xl font-mono font-bold mb-8 text-center">
+프로젝트
+</h1>
 
-  <!-- Projects Section -->
-  <div class="projects flex flex-col gap-8 md:p-8 leading-relaxed space-y-8">
+<!-- Projects Section -->
+<div class="projects cert-grid md:p-8 leading-relaxed">
 
     <!-- Project 1 -->
-    <div class="project-card project1 border border-gray-300 dark:border-gray-600 p-4 rounded-lg bg-white dark:bg-gray-800" data-index="0">
-      <div class="project-card-inner">
-        <h2 class="text-2xl font-mono font-semibold text-gray-900 dark:text-emerald-400 mb-2" data-text="{Ambulance-Connect AI}">{Ambulance-Connect AI}</h2>
-        <p class="text-gray-700 dark:text-gray-400 mb-3">
+    <div class="cert-card" data-index="0">
+      <div class="cert-card-inner">
+        <span class="card-index">01</span>
+        <h2 class="cert-title" data-text="{Ambulance-Connect AI}">{Ambulance-Connect AI}</h2>
+        <p class="cert-desc">
            AI-powered ambulance management system.
         </p>
-        <a href="#" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
+        <a href="https://github.com/jaswanthyandrapalli/DAmbulance-connecter" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
           >>> Spell Out
         </a>
       </div>
     </div>
 
     <!-- Project 2 -->
-    <div class="project-card project2 border border-gray-300 dark:border-gray-600 p-4 rounded-lg bg-white dark:bg-gray-800" data-index="1">
-      <div class="project-card-inner">
-        <h2 class="text-2xl font-mono font-semibold text-gray-900 dark:text-emerald-400 mb-2" data-text="{E-commerce Platform}">{E-commerce Platform}</h2>
-        <p class="text-gray-700 dark:text-gray-400 mb-3">
-          Full-stack online store with React and Node.js.
+    <div class="cert-card" data-index="1">
+      <div class="cert-card-inner">
+        <span class="card-index">02</span>
+        <h2 class="cert-title" data-text="{Jaswanth's Portfolio}">{Jaswanth's Portfolio}</h2>
+        <p class="cert-desc">
+          Jaswanth's HOME
         </p>
-        <a href="#" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
+        <a href="https://github.com/jaswanthyandrapalli/CodeAlpha_Jaswanth-sPortfolio" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
           >>> Spell Out
         </a>
       </div>
     </div>
 
     <!-- Project 3 -->
-    <div class="project-card project3 border border-gray-300 dark:border-gray-600 p-4 rounded-lg bg-white dark:bg-gray-800" data-index="2">
-      <div class="project-card-inner">
-        <h2 class="text-2xl font-mono font-semibold text-gray-900 dark:text-emerald-400 mb-2" data-text="{Weather-App}">{Weather-App}</h2>
-        <p class="text-gray-700 dark:text-gray-400 mb-3">
+    <div class="cert-card" data-index="2">
+      <div class="cert-card-inner">
+        <span class="card-index">03</span>
+        <h2 class="cert-title" data-text="{Weather-App}">{Weather-App}</h2>
+        <p class="cert-desc">
           Real-time weather information with a clean UI.
         </p>
-        <a href="#" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
+        <a href="https://github.com/jaswanthyandrapalli/Weather_App" class="text-white bg-blue-600 dark:bg-blue-500 px-4 py-2 rounded-lg font-mono text-sm hover:bg-blue-500 hover:dark:bg-blue-400 transition transform hover:scale-105">
           >>> Spell Out
         </a>
       </div>
@@ -373,6 +579,17 @@ transition:color 0.3s ease;
 
 <script>
 
+// Dark mode toggle function
+function toggleDark() {
+document.body.classList.toggle('dark');
+const button = document.querySelector('button[onclick="toggleDark()"]');
+if (document.body.classList.contains('dark')) {
+button.textContent = '☀️';
+} else {
+button.textContent = '🌙';
+}
+}
+
 /* Parallax scroll effect */
 window.addEventListener('scroll', () => {
 const scrollY = window.scrollY;
@@ -381,7 +598,7 @@ body.style.setProperty('--scroll-y', scrollY + 'px');
 });
 
 /* Scroll reveal for project cards */
-const projectCards = document.querySelectorAll('.project-card');
+const projectCards = document.querySelectorAll('.cert-card');
 const projectObserver = new IntersectionObserver((entries) => {
 entries.forEach((entry, idx) => {
 if(entry.isIntersecting) {

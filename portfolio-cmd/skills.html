@@ -6,7 +6,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Terminal Skills</title>
+ <title>⚡ Jaswanth's |Skills</title>
+
+    <!-- SVG (modern browsers) -->
+    <link rel="icon" type="image/jpg" href="icons8-circled-j-50.png">
+
+    <!-- Fallback (important) -->
+    <link rel="icon" href="icons8-circled-j-50.png">
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -21,16 +27,23 @@ darkMode: 'class'
 <style>
 
 :root{
+--bg:#f3f4f6;
+--card-bg:#ffffff;
+--border:rgba(0,0,0,0.1);
+--border-active:rgba(0,0,0,0.3);
+--accent:#10b981;
+--text:#1f2937;
+--text-dim:#6b7280;
 --red:#3b82f6;
 --angle:0deg;
 }
 
-html{
-scroll-behavior: smooth;
-}
-
 body{
 font-family:'JetBrains Mono', monospace;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
 position:relative;
 }
 
@@ -328,16 +341,30 @@ box-shadow:0 0 30px rgba(59,130,246,0.2);
 border-color:var(--red);
 }
 
+/* Dark mode */
+.dark{
+--bg:#111827;
+--card-bg:#1f2937;
+--text:#e5e7eb;
+--text-dim:#9ca3af;
+--border:rgba(255,255,255,0.08);
+--border-active:rgba(255,255,255,0.25);
+--accent:#34d399;
+--red:#3b82f6;
+}
+
 </style>
 
-</head>
-
-<body class="bg-white dark:bg-[#111828] flex items-center justify-center min-h-screen text-gray-800 dark:text-gray-300" style="font-family: 'JetBrains Mono', monospace;">
+<body class="flex items-center justify-center min-h-screen p-4">
 
 <!-- Dark Mode Button -->
-<button id="darkToggle" class="fixed top-5 right-5 text-xl z-50">
+<button onclick="toggleDark()" class="fixed top-5 right-10 text-xl z-50">
 🌙
 </button>
+
+<div class="w-full max-w-5xl">
+
+
 
 <!-- TERMINAL WINDOW -->
 
@@ -510,6 +537,17 @@ border-color:var(--red);
 <script src="../about-me/script.js"></script>
 
 <script>
+
+// Dark mode toggle function
+function toggleDark() {
+document.body.classList.toggle('dark');
+const button = document.querySelector('button[onclick="toggleDark()"]');
+if (document.body.classList.contains('dark')) {
+button.textContent = '☀️';
+} else {
+button.textContent = '🌙';
+}
+}
 
 /* Reveal animation with stagger */
 

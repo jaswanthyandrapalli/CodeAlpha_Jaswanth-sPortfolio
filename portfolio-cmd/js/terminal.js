@@ -7,12 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const commands = {
         'help': 
-        'Available: {cd about} ,{cd projects} ,{cd skills} ,{cd certifications} ,{clear}',
+        'Available: {cd about} ,{cd projects} ,{cd skills} ,{cd certifications} ,{clear} ,{cd connect}',
         'cd about': () => window.location.href = 'about.html',
         'cd projects': () => window.location.href = 'projects.html',
         'cd skills': () => window.location.href = 'skills.html',
         'cd certifications': () => window.location.href = 'certifications.html',
-        'clear': () => { output.innerHTML = ''; return ''; }
+        'clear': () => { output.innerHTML = ''; return ''; },
+        'cd connect': () => { window.location.href = 'connect.html'; return ''; }
     };
 
     let history = [];

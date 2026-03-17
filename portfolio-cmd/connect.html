@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+ <title>⚡ Jaswanth's | Connect</title>
+
+    <!-- SVG (modern browsers) -->
+    <link rel="icon" type="image/png" href="icons8-circled-j-50.png">
+
+    <!-- Fallback (important) -->
+    <link rel="icon" href="icons8-circled-j-50.png">
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f3f4f6;
+--card-bg:#ffffff;
+--border:rgba(0,0,0,0.1);
+--border-active:rgba(0,0,0,0.3);
+--accent:#10b981;
+--text:#1f2937;
+--text-dim:#6b7280;
+--red:#b83c28;
+--angle:0deg;
+}
+
+body{
+font-family:'JetBrains Mono', monospace;
+background:var(--bg);
+color:var(--text);
+min-height:100vh;
+overflow-x:hidden;
+position:relative;
+}
+
+/* CRT Scanlines */
+body::before{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:repeating-linear-gradient(
+0deg,
+rgba(0,0,0,0.08),
+rgba(0,0,0,0.08) 1px,
+transparent 1px,
+transparent 2px
+);
+pointer-events:none;
+z-index:999;
+}
+
+/* Noise texture */
+body::after{
+content:'';
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:url('data:image/svg+xml,%3Csvg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2"/%3E%3C/filter%3E%3Crect width="400" height="400" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+pointer-events:none;
+z-index:998;
+}
+
+
+
+@keyframes glitch{
+0%{transform:translateX(0);}
+25%{transform:translateX(-2px);}
+50%{transform:translateX(2px);}
+75%{transform:translateX(-1px);}
+100%{transform:translateX(0);}
+}
+
+@keyframes glitch2{
+0%{transform:translateX(0);}
+25%{transform:translateX(2px);}
+50%{transform:translateX(-2px);}
+75%{transform:translateX(1px);}
+100%{transform:translateX(0);}
+}
+
+
+
+/* Connection Card Styles */
+.connect-card{
+background:var(--card-bg);
+border:2px solid var(--border);
+border-radius:12px;
+padding:32px 24px;
+margin:20px auto;
+max-width:400px;
+position:relative;
+overflow:hidden;
+transition:all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.connect-card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(90deg, transparent, rgba(184,60,40,0.1), transparent);
+transition:left 0.5s ease;
+pointer-events:none;
+}
+
+.connect-card:hover{
+transform:translateY(-8px);
+border-color:var(--red);
+box-shadow:0 12px 24px rgba(184,60,40,0.15), 0 0 1px rgba(184,60,40,0.5);
+}
+
+.connect-card:hover::before{
+left:100%;
+}
+
+/* Section Container */
+.section-container{
+margin:40px 0;
+}
+
+.section-title{
+font-size:16px;
+font-weight:600;
+color:var(--red);
+margin-bottom:24px;
+text-transform:uppercase;
+letter-spacing:2px;
+position:relative;
+display:inline-block;
+width:100%;
+text-align:center;
+}
+
+.section-title::after{
+content:'';
+position:absolute;
+bottom:-8px;
+left:50%;
+transform:translateX(-50%);
+width:40px;
+height:2px;
+background:linear-gradient(90deg, transparent, var(--red), transparent);
+}
+
+/* Email Box */
+.email-box{
+background:var(--card-bg);
+border:2px solid var(--border);
+border-radius:12px;
+padding:28px;
+text-align:center;
+transition:all 0.4s ease;
+position:relative;
+overflow:hidden;
+}
+
+.email-box::after{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:radial-gradient(circle at center, rgba(184,60,40,0.05) 0%, transparent 70%);
+pointer-events:none;
+}
+
+.email-box:hover{
+border-color:var(--red);
+box-shadow:0 8px 20px rgba(184,60,40,0.12), inset 0 0 1px rgba(184,60,40,0.1);
+transform:scale(1.02);
+}
+
+.email-label{
+font-size:13px;
+font-weight:600;
+color:var(--text-dim);
+letter-spacing:1px;
+margin-bottom:12px;
+text-transform:uppercase;
+display:block;
+}
+
+.email-address{
+font-size:16px;
+font-weight:600;
+color:var(--red);
+text-decoration:none;
+transition:all 0.3s ease;
+position:relative;
+display:inline-block;
+}
+
+.email-address::after{
+content:'';
+position:absolute;
+bottom:-4px;
+left:0;
+right:0;
+height:2px;
+background:var(--red);
+transform:scaleX(0);
+transform-origin:right;
+transition:transform 0.3s ease;
+}
+
+.email-box:hover .email-address::after{
+transform:scaleX(1);
+transform-origin:left;
+}
+
+/* Social Icons Container */
+.social-container{
+background:var(--card-bg);
+border:2px solid var(--border);
+border-radius:12px;
+padding:32px;
+margin:20px auto;
+max-width:400px;
+transition:all 0.4s ease;
+}
+
+.social-container:hover{
+border-color:var(--red);
+box-shadow:0 12px 24px rgba(184,60,40,0.15);
+}
+
+.social-icons-wrapper{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.social-icon-link{
+width:56px;
+height:56px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:10px;
+border:2px solid var(--border);
+color:var(--text);
+transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+position:relative;
+overflow:hidden;
+background:var(--card-bg);
+}
+
+.social-icon-link::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:linear-gradient(135deg, rgba(184,60,40,0.1), transparent);
+opacity:0;
+transition:opacity 0.3s ease;
+}
+
+.social-icon-link:hover{
+transform:translateY(-6px) scale(1.1);
+border-color:var(--red);
+color:var(--red);
+box-shadow:0 8px 16px rgba(184,60,40,0.2);
+}
+
+.social-icon-link:hover::before{
+opacity:1;
+}
+
+.social-icon-link svg{
+transition:transform 0.3s ease;
+}
+
+.social-icon-link:hover svg{
+transform:rotate(15deg) scale(1.2);
+}
+
+/* CV Button Container */
+.cv-box{
+background:var(--card-bg);
+border:2px solid var(--border);
+border-radius:12px;
+padding:32px 24px;
+text-align:center;
+margin:20px auto;
+max-width:400px;
+transition:all 0.4s ease;
+position:relative;
+}
+
+.cv-box:hover{
+border-color:var(--red);
+box-shadow:0 12px 24px rgba(184,60,40,0.15);
+}
+
+.cv-label{
+font-size:13px;
+font-weight:600;
+color:var(--text-dim);
+letter-spacing:1px;
+margin-bottom:16px;
+text-transform:uppercase;
+display:block;
+}
+
+.cv-button{
+display:inline-block;
+padding:14px 28px;
+font-size:15px;
+font-weight:700;
+font-family:'JetBrains Mono', monospace;
+color:white;
+background:var(--red);
+border:2px solid var(--red);
+border-radius:8px;
+text-decoration:none;
+transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+position:relative;
+overflow:hidden;
+letter-spacing:1px;
+cursor:pointer;
+}
+
+.cv-button::before{
+content:'';
+position:absolute;
+top:50%;
+left:50%;
+width:0;
+height:0;
+background:rgba(255,255,255,0.2);
+border-radius:50%;
+transform:translate(-50%, -50%);
+transition:width 0.6s, height 0.6s;
+}
+
+.cv-button:hover::before{
+width:300px;
+height:300px;
+}
+
+.cv-button:hover{
+transform:translateY(-4px);
+box-shadow:0 8px 16px rgba(184,60,40,0.3);
+letter-spacing:1.5px;
+}
+
+.cv-button:active{
+transform:translateY(-2px);
+box-shadow:0 4px 8px rgba(184,60,40,0.2);
+}
+
+/* Dark mode */
+.dark{
+--bg:#111827;
+--card-bg:#1f2937;
+--text:#e5e7eb;
+--text-dim:#9ca3af;
+--border:rgba(255,255,255,0.08);
+--border-active:rgba(255,255,255,0.25);
+--accent:#34d399;
+--red:#e05535;
+}
+
+</style>
+
+
+</head>
+
+
+<body class="flex items-center justify-center min-h-screen p-4">
+
+<!-- DARK MODE BUTTON (TOP RIGHT) -->
+
+<button onclick="toggleDark()"
+class="fixed top-5 right-10 text-xl z-50">
+🌙
+</button>
+
+
+<div class="w-full max-w-2xl text-center">
+
+<h1 class="text-5xl font-mono font-bold mb-20 text-center" style="letter-spacing: 3px;">
+>>> connect
+</h1>
+
+<!-- Email Section -->
+<div class="section-container">
+  <h2 class="section-title">📧 Email</h2>
+  <div class="email-box">
+    <span class="email-label">Contact</span>
+    <a href="mailto:yandrapallijaswanth@gmail.com" class="email-address">
+      yandrapallijaswanth@gmail.com
+    </a>
+  </div>
+</div>
+
+<!-- Social Media Section -->
+<div class="section-container">
+  <h2 class="section-title">🔗 Social Networks</h2>
+  <div class="social-container">
+    <div class="social-icons-wrapper">
+      <!-- GitHub -->
+      <a href="https://github.com/jaswanthyandrapalli" target="_blank" 
+         class="social-icon-link"
+         title="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v 3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+        </svg>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/jaswanth22_chowdary?igsh=bXF5eDd2NGRudTZi" target="_blank" 
+         class="social-icon-link"
+         title="Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.057-1.645.069-4.849.069-3.204 0-3.584-.012-4.849-.069-3.259-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+        </svg>
+      </a>
+
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/yandrapalli-jaswanth-412161339" target="_blank" 
+         class="social-icon-link"
+         title="LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.475-2.236-1.986-2.236-1.081 0-1.722.731-2.004 1.436-.103.249-.129.597-.129.946v5.423h-3.554s.044-8.789 0-9.707h3.554v1.375c.427-.659 1.19-1.597 2.898-1.597 2.117 0 3.704 1.385 3.704 4.363v5.566zM5.337 8.855c-1.144 0-1.915-.758-1.915-1.705 0-.948.77-1.705 1.966-1.705 1.195 0 1.916.757 1.93 1.705 0 .947-.735 1.705-1.981 1.705zm1.946 11.597H3.392V9.745h3.891v10.707zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CV Section -->
+<div class="section-container">
+  <h2 class="section-title">📄 Resume</h2>
+  <div class="cv-box">
+    <span class="cv-label">Download My CV</span>
+    <a href="./assets/resume.pdf" download class="cv-button">
+      📥 Get Resume
+    </a>
+  </div>
+</div>
+
+</div>
+<a href="index.html"
+class="fixed bottom-10 right-10 bg-yellow-500 text-gray-700 dark:text-yellow-300 px-4 py-2 border border-gray-400/20 rounded-lg font-mono text-xl transition transform hover:scale-110 hover:text-yellow-500 hover:bg-gray-200 dark:hover:bg-gray-700 z-50">
+>>>
+</a>
+
+<script>
+// Dark mode toggle
+function toggleDark() {
+    document.body.classList.toggle('dark');
+    const button = document.querySelector('button');
+    button.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+}
+// </script>
+
+
+</body>
+</html>
