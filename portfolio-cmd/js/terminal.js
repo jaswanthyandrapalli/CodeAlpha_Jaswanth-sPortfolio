@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const commands = {
         'help': 
         'Available: {cd about} ,{cd projects} ,{cd skills} ,{cd certifications} ,{clear} ,{cd connect}',
-        'cd about': () => window.location.href = 'about.html',
-        'cd projects': () => window.location.href = 'projects.html',
-        'cd skills': () => window.location.href = 'skills.html',
-        'cd certifications': () => window.location.href = 'certifications.html',
+        'cd about': () => window.location.href = './portfolio-cmd/about.html',
+        'cd projects': () => window.location.href = './portfolio-cmd/projects.html',
+        'cd skills': () => window.location.href = './portfolio-cmd/skills.html',
+        'cd certifications': () => window.location.href = './portfolio-cmd/certifications.html',
         'clear': () => { output.innerHTML = ''; return ''; },
-        'cd connect': () => { window.location.href = 'connect.html'; return ''; }
+        'cd connect': () => { window.location.href = './portfolio-cmd/connect.html'; return ''; }
     };
 
     let history = [];
