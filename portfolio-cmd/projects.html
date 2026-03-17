@@ -7,10 +7,10 @@
  <title>⚡ Jaswanth's | Archives</title>
 
     <!-- SVG (modern browsers) -->
-    <link rel="icon" type="image/jpg" href="icons8-circled-j-50.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Fallback (important) -->
-    <link rel="icon" href="icons8-circled-j-50.png">
+    <link rel="icon" href="favicon.ico">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="../about-me/styles.css">
@@ -503,6 +503,118 @@ transform:translateY(0);
 --border-active:rgba(255,255,255,0.25);
 --accent:#34d399;
 --red:#e05535;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile (Phones, Portrait): Up to 480px */
+@media(max-width:480px){
+  h1{
+    font-size:24px !important;
+    margin-bottom:12px !important;
+  }
+
+  .projects-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+
+  .project-card{
+    padding:16px !important;
+  }
+
+  .project-title{
+    font-size:13px !important;
+    margin-bottom:8px !important;
+  }
+
+  .project-desc{
+    font-size:11px !important;
+    line-height:1.4 !important;
+  }
+
+  .project-tech{
+    font-size:10px !important;
+    gap:6px !important;
+  }
+
+  .tech-tag{
+    padding:3px 6px !important;
+  }
+}
+
+/* Tablet (Portrait & Large Phones): 481px - 768px */
+@media(min-width:481px) and (max-width:768px){
+  h1{
+    font-size:32px !important;
+    margin-bottom:16px !important;
+  }
+
+  .projects-grid{
+    grid-template-columns:repeat(2, 1fr) !important;
+    gap:16px !important;
+  }
+
+  .project-card{
+    padding:20px !important;
+  }
+
+  .project-title{
+    font-size:14px !important;
+    margin-bottom:10px !important;
+  }
+
+  .project-desc{
+    font-size:12px !important;
+    line-height:1.5 !important;
+  }
+
+  .project-tech{
+    font-size:11px !important;
+    gap:8px !important;
+  }
+
+  .tech-tag{
+    padding:4px 8px !important;
+  }
+}
+
+/* Tablet (Landscape) / Small Laptops: 769px and above */
+@media(min-width:769px){
+  h1{
+    font-size:40px !important;
+    margin-bottom:20px !important;
+  }
+
+  .projects-grid{
+    grid-template-columns:repeat(auto-fill, minmax(300px, 1fr)) !important;
+    gap:20px !important;
+  }
+
+  .project-card{
+    padding:24px !important;
+  }
+
+  .project-title{
+    font-size:15px !important;
+    margin-bottom:12px !important;
+  }
+
+  .project-desc{
+    font-size:12px !important;
+    line-height:1.6 !important;
+  }
+
+  .project-tech{
+    font-size:12px !important;
+    gap:10px !important;
+  }
+
+  .tech-tag{
+    padding:5px 10px !important;
+  }
 }
 
 </style></head>

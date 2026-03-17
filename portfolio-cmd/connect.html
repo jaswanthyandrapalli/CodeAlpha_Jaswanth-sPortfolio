@@ -7,12 +7,14 @@
  <title>⚡ Jaswanth's | Connect</title>
 
     <!-- SVG (modern browsers) -->
-    <link rel="icon" type="image/png" href="icons8-circled-j-50.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Fallback (important) -->
-    <link rel="icon" href="icons8-circled-j-50.png">
+    <link rel="icon" href="favicon.ico">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../about-me/styles.css">
+<link rel="stylesheet" href="css/tailwind.css">
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -377,6 +379,178 @@ box-shadow:0 4px 8px rgba(184,60,40,0.2);
 --border-active:rgba(255,255,255,0.25);
 --accent:#34d399;
 --red:#e05535;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile (Phones, Portrait): Up to 480px */
+@media(max-width:480px){
+  h1{
+    font-size:28px !important;
+    margin-bottom:12px !important;
+  }
+
+  .section-container{
+    padding:16px !important;
+    margin-bottom:16px !important;
+  }
+
+  .section-title{
+    font-size:16px !important;
+    margin-bottom:12px !important;
+  }
+
+  .email-box,
+  .social-container,
+  .cv-box{
+    padding:12px !important;
+  }
+
+  .email-label,
+  .cv-label{
+    font-size:11px !important;
+  }
+
+  .email-link,
+  .cv-button{
+    font-size:13px !important;
+    padding:8px 12px !important;
+  }
+
+  .social-icon-link{
+    font-size:24px !important;
+    padding:8px !important;
+  }
+
+  .dark-mode-btn{
+    top:10px !important;
+    right:10px !important;
+    font-size:18px !important;
+  }
+
+  .back-btn{
+    bottom:8px !important;
+    right:8px !important;
+    padding:8px 10px !important;
+    font-size:16px !important;
+  }
+}
+
+/* Tablet (Portrait & Large Phones): 481px - 768px */
+@media(min-width:481px) and (max-width:768px){
+  h1{
+    font-size:36px !important;
+    margin-bottom:16px !important;
+  }
+
+  .section-container{
+    padding:20px !important;
+    margin-bottom:20px !important;
+  }
+
+  .section-title{
+    font-size:18px !important;
+    margin-bottom:14px !important;
+  }
+
+  .email-box,
+  .social-container,
+  .cv-box{
+    padding:16px !important;
+  }
+
+  .email-label,
+  .cv-label{
+    font-size:12px !important;
+  }
+
+  .email-link,
+  .cv-button{
+    font-size:14px !important;
+    padding:10px 16px !important;
+  }
+
+  .social-icon-link{
+    font-size:28px !important;
+    padding:10px !important;
+  }
+
+  .social-container{
+    gap:12px !important;
+  }
+
+  .dark-mode-btn{
+    top:12px !important;
+    right:12px !important;
+    font-size:20px !important;
+  }
+
+  .back-btn{
+    bottom:10px !important;
+    right:10px !important;
+    padding:10px 14px !important;
+    font-size:18px !important;
+  }
+}
+
+/* Tablet (Landscape) / Small Laptops: 769px and above */
+@media(min-width:769px){
+  h1{
+    font-size:48px !important;
+    margin-bottom:24px !important;
+  }
+
+  .section-container{
+    padding:28px !important;
+    margin-bottom:28px !important;
+    transition:all 0.3s ease !important;
+  }
+
+  .section-title{
+    font-size:22px !important;
+    margin-bottom:18px !important;
+  }
+
+  .email-box,
+  .social-container,
+  .cv-box{
+    padding:20px !important;
+  }
+
+  .email-label,
+  .cv-label{
+    font-size:13px !important;
+  }
+
+  .email-link,
+  .cv-button{
+    font-size:15px !important;
+    padding:12px 20px !important;
+  }
+
+  .social-icon-link{
+    font-size:32px !important;
+    padding:12px !important;
+  }
+
+  .social-container{
+    gap:16px !important;
+  }
+
+  .dark-mode-btn{
+    top:16px !important;
+    right:16px !important;
+    font-size:24px !important;
+  }
+
+  .back-btn{
+    bottom:16px !important;
+    right:16px !important;
+    padding:12px 18px !important;
+    font-size:20px !important;
+  }
 }
 
 </style>

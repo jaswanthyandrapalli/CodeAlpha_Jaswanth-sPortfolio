@@ -9,12 +9,14 @@
  <title>⚡ Jaswanth's |Skills</title>
 
     <!-- SVG (modern browsers) -->
-    <link rel="icon" type="image/jpg" href="icons8-circled-j-50.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Fallback (important) -->
-    <link rel="icon" href="icons8-circled-j-50.png">
+    <link rel="icon" href="favicon.ico">
 
 <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../about-me/styles.css">
+<link rel="stylesheet" href="css/tailwind.css">
 
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
 
@@ -351,6 +353,100 @@ border-color:var(--red);
 --border-active:rgba(255,255,255,0.25);
 --accent:#34d399;
 --red:#3b82f6;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile (Phones, Portrait): Up to 480px */
+@media(max-width:480px){
+  h1{
+    font-size:24px !important;
+    margin-bottom:12px !important;
+  }
+
+  .skills-grid{
+    grid-template-columns:1fr !important;
+    gap:12px !important;
+  }
+
+  .skill-card{
+    padding:16px !important;
+  }
+
+  .skill-name{
+    font-size:13px !important;
+    margin-bottom:8px !important;
+  }
+
+  .skill-bar{
+    height:6px !important;
+  }
+
+  .skill-percentage{
+    font-size:11px !important;
+  }
+}
+
+/* Tablet (Portrait & Large Phones): 481px - 768px */
+@media(min-width:481px) and (max-width:768px){
+  h1{
+    font-size:32px !important;
+    margin-bottom:16px !important;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(2, 1fr) !important;
+    gap:16px !important;
+  }
+
+  .skill-card{
+    padding:20px !important;
+  }
+
+  .skill-name{
+    font-size:14px !important;
+    margin-bottom:10px !important;
+  }
+
+  .skill-bar{
+    height:7px !important;
+  }
+
+  .skill-percentage{
+    font-size:12px !important;
+  }
+}
+
+/* Tablet (Landscape) / Small Laptops: 769px and above */
+@media(min-width:769px){
+  h1{
+    font-size:40px !important;
+    margin-bottom:20px !important;
+  }
+
+  .skills-grid{
+    grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)) !important;
+    gap:20px !important;
+  }
+
+  .skill-card{
+    padding:24px !important;
+  }
+
+  .skill-name{
+    font-size:15px !important;
+    margin-bottom:12px !important;
+  }
+
+  .skill-bar{
+    height:8px !important;
+  }
+
+  .skill-percentage{
+    font-size:13px !important;
+  }
 }
 
 </style>

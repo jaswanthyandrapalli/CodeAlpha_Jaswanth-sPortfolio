@@ -7,10 +7,10 @@
 <title>⚡ Jaswanth's | Home</title>
 
     <!-- SVG (modern browsers) -->
-    <link rel="icon" type="image/jpg" href="icons8-circled-j-50.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <!-- Fallback (important) -->
-    <link rel="icon" href="icons8-circled-j-50.png">
+    <link rel="icon" href="favicon.ico">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="../about-me/styles.css">
@@ -279,6 +279,147 @@ animation:borderExpand 0.8s ease-out forwards;
 @keyframes borderExpand{
 from{height:0%;}
 to{height:100%;}
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MOBILE FIRST
+   ============================================ */
+
+/* Mobile (Phones, Portrait): Up to 480px */
+@media(max-width:480px){
+  body{
+    font-size:13px !important;
+  }
+
+  h1, h2, h3{
+    font-size:20px !important;
+    line-height:1.3 !important;
+  }
+
+  .terminal{
+    padding:12px !important;
+    margin:8px !important;
+  }
+
+  .terminal-content{
+    font-size:12px !important;
+    line-height:1.4 !important;
+  }
+
+  .max-w-4xl{
+    max-width:100% !important;
+    padding:0 12px !important;
+  }
+
+  .p-8{
+    padding:12px !important;
+  }
+
+  .mb-8{
+    margin-bottom:12px !important;
+  }
+
+  .text-lg{
+    font-size:13px !important;
+  }
+
+  .fixed.bottom-10.right-10{
+    bottom:8px !important;
+    right:8px !important;
+    padding:8px 10px !important;
+    font-size:16px !important;
+  }
+}
+
+/* Tablet (Portrait & Large Phones): 481px - 768px */
+@media(min-width:481px) and (max-width:768px){
+  body{
+    font-size:14px !important;
+  }
+
+  h1, h2, h3{
+    font-size:28px !important;
+    line-height:1.3 !important;
+  }
+
+  .terminal{
+    padding:16px !important;
+    margin:12px !important;
+  }
+
+  .terminal-content{
+    font-size:13px !important;
+    line-height:1.5 !important;
+  }
+
+  .max-w-4xl{
+    max-width:100% !important;
+    padding:0 16px !important;
+  }
+
+  .p-8{
+    padding:16px !important;
+  }
+
+  .mb-8{
+    margin-bottom:16px !important;
+  }
+
+  .text-lg{
+    font-size:14px !important;
+  }
+
+  .fixed.bottom-10.right-10{
+    bottom:10px !important;
+    right:10px !important;
+    padding:10px 14px !important;
+    font-size:18px !important;
+  }
+}
+
+/* Tablet (Landscape) / Small Laptops: 769px and above */
+@media(min-width:769px){
+  body{
+    font-size:16px !important;
+  }
+
+  h1, h2, h3{
+    font-size:36px !important;
+    line-height:1.2 !important;
+  }
+
+  .terminal{
+    padding:20px !important;
+    margin:16px !important;
+  }
+
+  .terminal-content{
+    font-size:14px !important;
+    line-height:1.6 !important;
+  }
+
+  .max-w-4xl{
+    max-width:64rem !important;
+  }
+
+  .p-8{
+    padding:32px !important;
+  }
+
+  .mb-8{
+    margin-bottom:32px !important;
+  }
+
+  .text-lg{
+    font-size:16px !important;
+  }
+
+  .fixed.bottom-10.right-10{
+    bottom:16px !important;
+    right:16px !important;
+    padding:12px 18px !important;
+    font-size:20px !important;
+  }
 }
 
 </style></head>
