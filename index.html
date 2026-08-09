@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content">
-<title>⚡ Jaswanth's Home</title>
+<title>⚡ Jaswanth's Portfolio</title>
 
 <link rel="icon" type="image/png" href="portfolio-cmd/icons8-circled-j-50.png">
 
@@ -96,6 +96,35 @@ html, body {
   /* smooth momentum scroll on iOS */
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
+}
+
+/* ── Quick links ── */
+.quick-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 14px 0 8px;
+}
+
+.quick-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--green-dark);
+  border-radius: 8px;
+  color: var(--green);
+  text-decoration: none;
+  font-size: var(--fs);
+  background: rgba(0, 102, 0, 0.12);
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.quick-link:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 170, 0, 0.18);
+  border-color: var(--green);
 }
 
 /* ── Welcome block ── */
@@ -264,6 +293,14 @@ html, body {
   <div id="output">
     <div id="welcome-section"></div>
   </div>
+  <div class="quick-links" aria-label="Quick navigation links">
+    <a class="quick-link" href="./portfolio-cmd/about.html">About</a>
+    <a class="quick-link" href="./portfolio-cmd/projects.html">Projects</a>
+    <a class="quick-link" href="./portfolio-cmd/skills.html">Skills</a>
+    <a class="quick-link" href="./portfolio-cmd/connect.html">Connect</a>
+    <a class="quick-link" href="./portfolio-cmd/certifications.html">Certifications</a>
+
+  </div>
   <div id="input-container">
     <span id="prompt" class="prompt">portfolio@cmd ~$&nbsp;</span>
     <input id="cmd-input" type="text" autocomplete="off" autocorrect="off"
@@ -289,9 +326,9 @@ function getWelcomeMessages() {
       "┌─────────────────────────────┐",
       "│                             │",
       "│   🎉  WELCOME TO            │",
-      "│       EL DORADO  🎉         │",
+      "│       Jaswanth's Portfolio🎉│",
       "│                             │",
-      "│   Jaswanth's HOME CMD       │",
+      "│   Jaswanth's  CMD       │",
       "│                             │",
       "└─────────────────────────────┘",
       "",
@@ -303,9 +340,9 @@ function getWelcomeMessages() {
   return [
     "╔════════════════════════════════════════════════════════════╗",
     "║                                                            ║",
-    "║              🎉  WELCOME TO EL DORADO  🎉                 ║",
+    "║              🎉  WELCOME TO JASWANTH'S PORTFOLIO  🎉                 ║",
     "║                                                            ║",
-    "║              Jaswanth's HOME CMD                          ║",
+    "║              Jaswanth's CMD                          ║",
     "║                                                            ║",
     "╚════════════════════════════════════════════════════════════╝",
     "",
